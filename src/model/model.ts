@@ -6,6 +6,12 @@ export class User {
     public nick: string;
 }
 
+export enum MatchState {
+    New = 'new',
+    Playing = 'playing',
+    Done = 'done'
+}
+
 export class Match {
 
     @prop()
@@ -22,6 +28,9 @@ export class Match {
 
     @prop()
     public score2: number;
+
+    @prop()
+    public state: MatchState;
 }
 
 export const UserDAO = getModelForClass(User);
