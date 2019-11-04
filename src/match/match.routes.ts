@@ -1,4 +1,4 @@
-import { BaseHttpController, controller, httpGet, queryParam, httpPost, requestBody, httpPut } from 'inversify-express-utils';
+import { BaseHttpController, controller, httpGet, queryParam, httpPost, requestBody, httpPut, requestParam } from 'inversify-express-utils';
 import { MatchDAO, Match } from '../model/model';
 
 @controller('/api/matches')
@@ -6,7 +6,7 @@ export class MatchRoutes extends BaseHttpController {
 
     @httpGet('/:id')
     async byId(
-        @queryParam('id') id: number
+        @requestParam('id') id: string
     ) {
         return await MatchDAO.findById(id);
     }
@@ -25,7 +25,7 @@ export class MatchRoutes extends BaseHttpController {
 
     @httpPut('/:id')
     async update(
-        @queryParam('id') id: number,
+        @requestParam('id') id: string,
         @requestBody() data: Match
     ) {
         return await MatchDAO.findByIdAndUpdate(id, data);

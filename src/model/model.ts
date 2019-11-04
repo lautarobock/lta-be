@@ -12,10 +12,10 @@ export class Match {
     public date: Date;
 
     @prop()
-    public team1: User[]
+    public team1: User[];
     
     @prop()
-    public team2: User[]
+    public team2: User[];
 
     @prop()
     public score1: number;
